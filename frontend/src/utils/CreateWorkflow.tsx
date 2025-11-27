@@ -18,7 +18,8 @@ interface NodeType {
     data: {
         type: TriggerType,
         kind: NodeKind,
-        metadata: NodeMetadata
+        metadata: NodeMetadata,
+        label: string
     },
     position: {
         x: number,
@@ -70,7 +71,8 @@ return (
                 data: {
                     type: "trigger",
                     kind,
-                    metadata
+                    metadata,
+                    label: kind
                 },
                 position: {
                     x: 0,
