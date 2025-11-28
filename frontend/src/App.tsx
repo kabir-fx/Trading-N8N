@@ -1,13 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CreateWorkflow } from "./utils/CreateWorkflow";
+import { ThemeProvider } from "./components/ui/theme-provider";
 
- export default function App() {
+export default function App() {
 
   return <div>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard" element={<CreateWorkflow />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<CreateWorkflow />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   </div>
 }
