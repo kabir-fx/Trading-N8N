@@ -38,7 +38,7 @@ const SUPPORTED_TRIGGERS = [
 ]
 
 // List of supported assets currently available for use
-const SUPPORTED_ASSETS = ["SOL", "BTC", "ETH"]
+export const SUPPORTED_ASSETS = ["SOL", "BTC", "ETH"]
 
 // Component to render a sheet on the RHS of the webpage
 export const TriggerSheet = ({
@@ -78,48 +78,60 @@ export const TriggerSheet = ({
                             </SelectGroup>
                         </SelectContent>
                     </Select>
-                    {selectedTrigger == "timer" && <div>
-                        No. of seconds after which to run the timer
-                        <Input type="text" placeholder="3600" onChange={(e) => {
-                            setMetadata((existingMetadata) => ({
-                                ...existingMetadata,
-                                time: Number(e.target.value)
-                            }))
-                        }} ></Input>
+                    {selectedTrigger == "timer" && <div className="space-y-4 pt-4">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Interval (seconds)
+                            </label>
+                            <Input type="text" placeholder="3600" onChange={(e) => {
+                                setMetadata((existingMetadata) => ({
+                                    ...existingMetadata,
+                                    time: Number(e.target.value)
+                                }))
+                            }} ></Input>
+                        </div>
                     </div>
                     }
 
-                    {selectedTrigger == "price-trigger" && <div>
-                        Price:
-                        <Input type="text" onChange={(e) => {
-                            setMetadata((existingMetadata) => ({
-                                ...existingMetadata,
-                                price: Number(e.target.value)
-                            }))
-                        }} >
-                        </Input>
+                    {selectedTrigger == "price-trigger" && <div className="space-y-4 pt-4">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Price
+                            </label>
+                            <Input type="text" placeholder="0.00" onChange={(e) => {
+                                setMetadata((existingMetadata) => ({
+                                    ...existingMetadata,
+                                    price: Number(e.target.value)
+                                }))
+                            }} >
+                            </Input>
+                        </div>
 
-                        Asset:
-                        <Select
-                            // value: This tells the dropdown: "Show the option that matches the variable selectedTrigger
-                            value={metadata.asset}
-                            //  onValueChange: When the user clicks a different option, this updates the selectedTrigger variable to the new choice
-                            onValueChange={(value) => setMetadata((existingMetadata) => ({
-                                ...existingMetadata,
-                                asset: value
-                            }))}>
-                            <SelectTrigger className="w-full">
-                                <SelectValue placeholder="Select an asset" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                <SelectGroup>
-                                    {/* Maps thru the list of all the supported triggers to display to the user */}
-                                    {SUPPORTED_ASSETS.map((id) => <>
-                                        <SelectItem value={id}> {id} </SelectItem>
-                                    </>)}
-                                </SelectGroup>
-                            </SelectContent>
-                        </Select>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                                Asset
+                            </label>
+                            <Select
+                                // value: This tells the dropdown: "Show the option that matches the variable selectedTrigger
+                                value={metadata.asset}
+                                //  onValueChange: When the user clicks a different option, this updates the selectedTrigger variable to the new choice
+                                onValueChange={(value) => setMetadata((existingMetadata) => ({
+                                    ...existingMetadata,
+                                    asset: value
+                                }))}>
+                                <SelectTrigger className="w-full">
+                                    <SelectValue placeholder="Select an asset" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectGroup>
+                                        {/* Maps thru the list of all the supported triggers to display to the user */}
+                                        {SUPPORTED_ASSETS.map((id) => <>
+                                            <SelectItem value={id}> {id} </SelectItem>
+                                        </>)}
+                                    </SelectGroup>
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </div>}
                 </SheetDescription>
             </SheetHeader>
