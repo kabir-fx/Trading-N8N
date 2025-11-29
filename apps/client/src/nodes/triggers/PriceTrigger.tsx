@@ -1,13 +1,5 @@
 import { Handle, Position } from "@xyflow/react"
-
-// Properties attached to a Price Trigger node
-export type PriceTriggerMetadata = {
-    // SOL, BTC, ETH, etc
-    asset: string
-
-    // Price of the asset
-    price: number
-}
+import type { PriceTriggerMetadata } from "common/types"
 
 // React component for a Price trigger node
 export function PriceTrigger({ data }: {

@@ -2,12 +2,13 @@ import { useState, useCallback } from 'react';
 import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { TriggerSheet } from './TriggerSheet';
-import { PriceTrigger, type PriceTriggerMetadata } from '@/nodes/triggers/PriceTrigger';
-import { Timer, type TimerNodeMetadata } from '@/nodes/triggers/Timer';
-import { ActionSheet, type TradingMetadata } from './ActionSheet';
+import { PriceTrigger } from '@/nodes/triggers/PriceTrigger';
+import { Timer } from '@/nodes/triggers/Timer';
+import { ActionSheet } from './ActionSheet';
 import { Lighter } from '@/nodes/actions/Lighter';
 import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
 import { Backpack } from '@/nodes/actions/Backpack';
+import type { ActionNodeMetadata, TimerTriggerMetadata, PriceTriggerMetadata } from 'common/types';
 
 // The type of triggers we support on an empty canvas
 export type TriggerType = "action" | "trigger"
@@ -16,7 +17,7 @@ export type TriggerType = "action" | "trigger"
 export type NodeKind = "price-trigger" | "timer" | "hyperliquid" | "backpack" | "lighter"
 
 // Metadata for the node storing info about the task its performing
-export type NodeMetadata = TradingMetadata | TimerNodeMetadata | PriceTriggerMetadata;
+export type NodeMetadata = ActionNodeMetadata | TimerTriggerMetadata | PriceTriggerMetadata;
 
 // Data structure for the node being used in the workflow
 interface NodeType {

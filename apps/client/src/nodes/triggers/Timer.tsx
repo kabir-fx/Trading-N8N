@@ -1,15 +1,10 @@
 import { Handle, Position } from "@xyflow/react"
-
-// Properties attached to a Time trigger node
-export type TimerNodeMetadata = {
-    // Seconds until this triggers acts
-    time: number
-}
+import type { TimerTriggerMetadata } from "common/types"
 
 // React component for a Time trigger node
 export function Timer({ data }: {
     data: {
-        metadata: TimerNodeMetadata,
+        metadata: TimerTriggerMetadata,
     }
 }) {
     return <div className="rounded-md border bg-card text-card-foreground shadow-sm w-[250px]">

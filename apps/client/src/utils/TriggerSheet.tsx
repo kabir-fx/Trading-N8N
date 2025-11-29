@@ -19,26 +19,8 @@ import {
 import type { NodeKind, NodeMetadata } from "./CreateWorkflow";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import type { PriceTriggerMetadata } from "@/nodes/triggers/PriceTrigger";
-import type { TimerNodeMetadata } from "@/nodes/triggers/Timer";
 import { Input } from "@/components/ui/input";
-
-// List of supported triggers currently available for use
-const SUPPORTED_TRIGGERS = [
-    {
-        id: "timer",
-        title: "Timer",
-        description: "Run this trigger every x min/sec."
-    },
-    {
-        id: "price-trigger",
-        title: "Price Trigger",
-        description: "Run this trigger when the price of a stock crosses a certain threshold."
-    }
-]
-
-// List of supported assets currently available for use
-export const SUPPORTED_ASSETS = ["SOL", "BTC", "ETH"]
+import { SUPPORTED_ASSETS, SUPPORTED_TRIGGERS, type PriceTriggerMetadata, type TimerTriggerMetadata } from "common/types";
 
 // Component to render a sheet on the RHS of the webpage
 export const TriggerSheet = ({
@@ -50,7 +32,7 @@ export const TriggerSheet = ({
     ) => void
 }) => {
     // State variables to handle the state of metadata of the node
-    const [metadata, setMetadata] = useState<PriceTriggerMetadata | TimerNodeMetadata>({
+    const [metadata, setMetadata] = useState<PriceTriggerMetadata | TimerTriggerMetadata>({
         time: 3600
     });
     const [selectedTrigger, setSelectedTrigger] = useState(SUPPORTED_TRIGGERS[0].id);

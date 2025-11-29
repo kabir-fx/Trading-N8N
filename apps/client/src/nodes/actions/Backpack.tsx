@@ -1,10 +1,10 @@
-import type { TradingMetadata } from "@/utils/ActionSheet"
 import { Handle, Position } from "@xyflow/react"
+import type { ActionNodeMetadata } from "common/types"
 
 // Component to render the Backpack node
 export function Backpack({ data }: {
     data: {
-        metadata: TradingMetadata
+        metadata: ActionNodeMetadata
     }
 }) {
     return <div className="rounded-md border bg-card text-card-foreground shadow-sm w-[250px]">

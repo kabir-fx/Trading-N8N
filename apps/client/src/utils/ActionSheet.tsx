@@ -19,34 +19,8 @@ import {
 import type { NodeKind, NodeMetadata } from "./CreateWorkflow";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { SUPPORTED_ASSETS } from "@/utils/TriggerSheet"
 import { Input } from "@/components/ui/input";
-
-// Properties attached to the action nodes
-export type ActionNodeMetadata = {
-    type: "LONG" | "SHORT",
-    qty: number,
-    symbol: typeof SUPPORTED_ASSETS
-}
-
-// List of supported triggers currently available for use
-const SUPPORTED_ACTIONS = [
-    {
-        id: "hyperliquid",
-        title: "Hyperliquid",
-        description: "Place a trade on hyperliquid."
-    },
-    {
-        id: "lighter",
-        title: "Lighter",
-        description: "Place a trade on lighter."
-    },
-    {
-        id: "backpack",
-        title: "Backpack",
-        description: "Place a trade on backpack."
-    }
-]
+import { SUPPORTED_ACTIONS, SUPPORTED_ASSETS, type ActionNodeMetadata } from "common/types";
 
 // Component to render a sheet on the RHS of the webpage
 export const ActionSheet = ({
