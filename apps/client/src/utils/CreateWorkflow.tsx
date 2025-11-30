@@ -8,37 +8,7 @@ import { ActionSheet } from './ActionSheet';
 import { Lighter } from '@/nodes/actions/Lighter';
 import { Hyperliquid } from '@/nodes/actions/Hyperliquid';
 import { Backpack } from '@/nodes/actions/Backpack';
-import type { ActionNodeMetadata, TimerTriggerMetadata, PriceTriggerMetadata } from 'common/types';
-
-// The type of triggers we support on an empty canvas
-export type TriggerType = "action" | "trigger"
-
-// The kinds of nodes a user can add on the canvas
-export type NodeKind = "price-trigger" | "timer" | "hyperliquid" | "backpack" | "lighter"
-
-// Metadata for the node storing info about the task its performing
-export type NodeMetadata = ActionNodeMetadata | TimerTriggerMetadata | PriceTriggerMetadata;
-
-// Data structure for the node being used in the workflow
-interface NodeType {
-    id: string,
-    type: NodeKind,
-    data: {
-        kind: TriggerType,
-        metadata: NodeMetadata,
-    },
-    position: {
-        x: number,
-        y: number
-    },
-}
-
-// Data structure for the edges being used in the workflow
-interface EdgeType {
-    id: string,
-    source: string,
-    target: string
-}
+import type { EdgeType, NodeType } from 'common/types';
 
 // Component that will handle all the workflow creation process
 function Flow() {

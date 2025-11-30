@@ -16,7 +16,7 @@ import {
     SheetHeader,
     SheetTitle
 } from "@/components/ui/sheet"
-import type { NodeKind, NodeMetadata } from "./CreateWorkflow";
+import type { NodeKind, NodeMetadata } from "common/types";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
